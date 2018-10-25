@@ -1,31 +1,27 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_isalnum.s                                       :+:      :+:    :+:    #
+#    ft_toupper.s                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/10/24 12:40:35 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/25 15:00:34 by fdexheim         ###   ########.fr        #
+#    Created: 2018/10/25 09:52:03 by fdexheim          #+#    #+#              #
+#    Updated: 2018/10/25 10:45:48 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-extern _ft_isalpha
-extern _ft_isdigit
-
 section .text
-	global _ft_isalnum
-	global yes
+extern _ft_islower
+global _ft_toupper
 
-_ft_isalnum:
-	mov rax, 0
-	call _ft_isalpha
-	cmp rax, 0
-	jne yes
-	call _ft_isdigit
-	cmp rax, 0
-	jne yes
+nope:
+	mv rax rdi
 	ret
 
-yes:
+_ft_toupper:
+	call _ft_islower
+	cmp rax, 0
+	je nope
+	mv rax rdi
+	sub rax 0x20
 	ret

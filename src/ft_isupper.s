@@ -1,31 +1,27 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_isalnum.s                                       :+:      :+:    :+:    #
+#    ft_isupper.s                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/10/24 12:40:35 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/25 15:00:34 by fdexheim         ###   ########.fr        #
+#    Created: 2018/10/25 10:08:49 by fdexheim          #+#    #+#              #
+#    Updated: 2018/10/25 10:24:04 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-extern _ft_isalpha
-extern _ft_isdigit
-
 section .text
-	global _ft_isalnum
-	global yes
+global _ft_isupper
+global notupper
 
-_ft_isalnum:
-	mov rax, 0
-	call _ft_isalpha
-	cmp rax, 0
-	jne yes
-	call _ft_isdigit
-	cmp rax, 0
-	jne yes
+nope:
+	mov rax, 0			;we set return value to 0 (true)
 	ret
 
-yes:
+_ft_isupper:
+	mov rax, 1			; set initial return value to true
+	cmp rdi, 0x41		; make sure parameter is over upper end
+	jl notupper		; if not, tell it to f*ck off
+	cmp rdi, 0x5a		; now compare with higher end
+	jg notupper		; been here done that
 	ret

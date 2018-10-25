@@ -6,35 +6,27 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/24 10:39:13 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/24 15:32:01 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/10/25 14:48:19 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+	extern _ft_islower
+	extern _ft_isupper
+
 section .text
 	global _ft_isalpha
-	global mightbelower
-	global mightbeupper
-	global isalphamate
-	global end
+	global notalpha
+
+notalpha:
+	mv rax, 0
+	ret
 
 _ft_isalpha:
-	mov rsi, 0			; set initial return value to false
-	cmp rdi, 0x61		; compare with minimum value of 'a' character
-	jge mightbelower
-
-isalphamate:
-	mov rsi, 1			; setting return value to 1 (true)
-	jmp end
-
-mightbelower:
-	cmp rdi, 0x7a		; 'z'
-	jle isalphamate
-	cmp rdi, 0x41		; compare with minimum value of 'A' character
-	jge mightbeupper
-
-mightbeupper:
-	cmp rdi, 0x5a		; 'Z'
-	jle isalphamate
-
-end:
+	call _ft_islower
+	cmp rax, 0		; compare with minimum value of 'a' character
+	jne notalpha
+	call _ft_isupper
+	cmp rax, 0
+	jne notalpha
+	mv rax, 1
 	ret

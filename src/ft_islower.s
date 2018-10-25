@@ -1,31 +1,27 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_isalnum.s                                       :+:      :+:    :+:    #
+#    ft_islower.s                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/10/24 12:40:35 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/25 15:00:34 by fdexheim         ###   ########.fr        #
+#    Created: 2018/10/25 10:00:43 by fdexheim          #+#    #+#              #
+#    Updated: 2018/10/25 10:23:36 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-extern _ft_isalpha
-extern _ft_isdigit
-
 section .text
-	global _ft_isalnum
-	global yes
+global _ft_islower
+global notlower
 
-_ft_isalnum:
-	mov rax, 0
-	call _ft_isalpha
-	cmp rax, 0
-	jne yes
-	call _ft_isdigit
-	cmp rax, 0
-	jne yes
+notlower:
+	mov rax, 0			;we set return value to 0 (true)
 	ret
 
-yes:
+_ft_islower:
+	mov rax, 1			; set initial return value to true
+	cmp rdi, 0x61		; make sure parameter is over lower end
+	jl notlower		; if not, tell it to f*ck off
+	cmp rdi, 0x7a		; now compare with higher end
+	jg notlower				; been here done that
 	ret

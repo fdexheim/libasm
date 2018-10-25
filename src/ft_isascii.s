@@ -1,31 +1,31 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_isdigit.s                                       :+:      :+:    :+:    #
+#    ft_isascii.s                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/10/22 15:04:57 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/25 10:14:56 by fdexheim         ###   ########.fr        #
+#    Created: 2018/10/25 09:33:48 by fdexheim          #+#    #+#              #
+#    Updated: 2018/10/25 10:15:30 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 section .text
-global _ft_isdigit
-global itsdigitmate
-global done
+global _ft_isascii
+global itsasciimatemate
+global notascii
 
-itsdigitmate:
+itsasciimate:
 	mov rax, 1			;we set return value to 1 (true)
-	jmp done
+	ret
 
-_ft_isdigit:
+notascii:
+	ret
+
+_ft_isascii:
 	mov rax, 0			; set initial return value to false
-	cmp rdi, 0x30		; make sure parameter is over lower end
-	jl done				; if not, tell it to f*ck off
-	cmp rdi, 0x39		; now compare with higher end
-	jle itsdigitmate	; ayy m89 it's a digit
-	jmp done			; we wish the finction a good day
-
-done:
-	ret					; cya
+	cmp rdi, 0x0		; make sure parameter is over lower end
+	jl notascii			; if not, tell it to f*ck off
+	cmp rdi, 0x7f		; now compare with higher end
+	jle itsasciimate	; ayy m89 it's an ascii
+	ret

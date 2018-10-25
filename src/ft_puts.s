@@ -1,31 +1,48 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_isalnum.s                                       :+:      :+:    :+:    #
+#    ft_puts.s                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/10/24 12:40:35 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/25 15:00:34 by fdexheim         ###   ########.fr        #
+#    Created: 2018/10/25 13:33:28 by fdexheim          #+#    #+#              #
+#    Updated: 2018/10/25 15:28:07 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-extern _ft_isalpha
-extern _ft_isdigit
+section .data
+putsstrs:
+	.endl db 10
+	.len equ $ - putsstrs.endl
 
 section .text
-	global _ft_isalnum
-	global yes
+	global _ft_puts
+	global putsloop
+	global goodputs
+	global badputs
 
-_ft_isalnum:
-	mov rax, 0
-	call _ft_isalpha
-	cmp rax, 0
-	jne yes
-	call _ft_isdigit
-	cmp rax, 0
-	jne yes
+goodputs:
+	mov rax, 4
+	mov rdi, 1
+	mov rsi, .endl
+	mov rdx, .len
 	ret
 
-yes:
+badputs:
+	mov rax, -1
 	ret
+
+_ft_puts:
+	cmp byte[rdi], 0
+	je badputs
+	mov rdi, 1
+	mov rsi, 1
+
+putsloop:
+	cmp byte[rdi], 0
+	je goodputs
+	mov rax, 4
+	mov rdi, 1
+	mov rdx, .len
+	syscall
+	jmp putsloop
