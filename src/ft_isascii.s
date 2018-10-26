@@ -6,15 +6,15 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 09:33:48 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/25 10:15:30 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/10/26 11:02:15 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-section .text
 global _ft_isascii
 global itsasciimatemate
 global notascii
 
+section .text
 itsasciimate:
 	mov rax, 1			;we set return value to 1 (true)
 	ret

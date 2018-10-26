@@ -6,43 +6,41 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 13:33:28 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/25 15:28:07 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/10/26 15:30:38 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 section .data
-putsstrs:
-	.endl db 10
-	.len equ $ - putsstrs.endl
+	endl: db "",10
+	end_len: dw 1
+	nul: db "(null)"
+	nul_len: equ $-nul
 
 section .text
 	global _ft_puts
 	global putsloop
-	global goodputs
-	global badputs
+	global endline
 
-goodputs:
+endline:
 	mov rax, 4
 	mov rdi, 1
-	mov rsi, .endl
-	mov rdx, .len
-	ret
-
-badputs:
-	mov rax, -1
+	mov rsi, endl
+	mov rdx, end_len
+	syscall
 	ret
 
 _ft_puts:
-	cmp byte[rdi], 0
-	je badputs
+	NOT GOOD
 	mov rdi, 1
 	mov rsi, 1
 
 putsloop:
 	cmp byte[rdi], 0
-	je goodputs
-	mov rax, 4
+	je endline
+	mov rax, 4					;write call
 	mov rdi, 1
-	mov rdx, .len
+	mov rdx, 1
 	syscall
+	NOT GOOD
+	inc rdi
 	jmp putsloop

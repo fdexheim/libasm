@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 10:08:49 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/25 10:24:04 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/10/26 13:06:38 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ section .text
 global _ft_isupper
 global notupper
 
-nope:
+notupper:
 	mov rax, 0			;we set return value to 0 (true)
 	ret
 
