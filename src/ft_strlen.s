@@ -1,30 +1,36 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_isalnum.s                                       :+:      :+:    :+:    #
+#    ft_strlen.s                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/10/24 12:40:35 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/30 10:57:27 by fdexheim         ###   ########.fr        #
+#    Created: 2018/10/30 09:55:01 by fdexheim          #+#    #+#              #
+#    Updated: 2018/10/30 14:03:49 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-extern _ft_isalpha
-extern _ft_isdigit
-global _ft_isalnum
-global yes
-
 section .text
-_ft_isalnum:
-	mov rax, 0
-	call _ft_isalpha
-	cmp rax, 0
-	jne yes
-	call _ft_isdigit
-	cmp rax, 0
-	jne yes
+
+global _ft_strlen
+global count
+global end
+
+count:
+	rep ; something
+	jmp end
+
+end:
+	mov rax, rdi
+	pop rdx
+	pop rsi
+	pop rdi
 	ret
 
-yes:
-	ret
+_ft_strlen:
+	push rdi
+	push rsi
+	push rdx
+	mov rdx, rdi
+	mov rdi, 0
+	jmp count
