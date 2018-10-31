@@ -6,13 +6,13 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 10:08:49 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/26 13:06:38 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/10/31 15:32:41 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 section .text
-global _ft_isupper
-global notupper
+	global _ft_isupper
+	global notupper
 
 notupper:
 	mov rax, 0			;we set return value to 0 (true)
@@ -21,7 +21,7 @@ notupper:
 _ft_isupper:
 	mov rax, 1			; set initial return value to true
 	cmp rdi, 0x41		; make sure parameter is over upper end
-	jl notupper		; if not, tell it to f*ck off
+	jl notupper			; if not, tell it to f*ck off
 	cmp rdi, 0x5a		; now compare with higher end
-	jg notupper		; been here done that
+	jg notupper			; been here done that
 	ret

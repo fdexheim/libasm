@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 13:33:28 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/30 11:01:12 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/10/31 15:33:07 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,17 @@ section .data
 	nul_len: equ $-nul
 
 section .text
+	extern _ft_strlen
 	global _ft_puts
-	global putsloop
 	global endline
 	global nodgood
-	global end
+
+notgood:
+	mov rax, 4
+	mov rdi, 1
+	mov rsi, nul
+	mov rdx, nul_len
+	syscall
 
 endline:
 	mov rax, 4
@@ -28,34 +34,15 @@ endline:
 	mov rsi, endl
 	mov rdx, 1
 	syscall
-	jmp end
-
-end:
-	pop rdx
-	pop rsi
-	pop rdi
 	ret
 
-notgood:
-	mov rax, 4
-	mov rdi, 1
-	mov rsi, nul
-	mov rdx, nul_len
-
 _ft_puts:
-	push rdi
-	push rsi
-	push rdx
-	mov rdi, 1
-	mov rsi, 1
-
-putsloop:
 	cmp rdi, 0
+	mov rdx, rdi
 	je notgood
-	mov rax, 4					;write call
+	call _ft_strlen
+	mov rdx, rax				; size iin 3rd parameter we got from _ft_strlen
+	mov rax, 4					; write call
 	mov rdi, 1
-	mov rdx, 1
 	syscall
-;	NOT GOOD
-	inc rdi
-	jmp putsloop
+	jmp endline

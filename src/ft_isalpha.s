@@ -6,14 +6,13 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/24 10:39:13 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/26 13:05:12 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/10/31 15:32:05 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-extern _ft_islower
-extern _ft_isupper
-
 section .text
+	extern _ft_islower
+	extern _ft_isupper
 	global _ft_isalpha
 	global notalpha
 

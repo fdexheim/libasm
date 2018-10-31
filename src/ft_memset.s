@@ -1,34 +1,29 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_bzero.s                                         :+:      :+:    :+:    #
+#    ft_memset.s                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/10/17 12:31:50 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/31 15:27:29 by fdexheim         ###   ########.fr        #
+#    Created: 2018/10/31 09:59:44 by fdexheim          #+#    #+#              #
+#    Updated: 2018/10/31 15:32:48 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 section .text
-	global _ft_bzero
-	global loop
-	global end
+	global _ft_memset
 
-end:
-	pop rdi
-	pop rdx
-	ret
-
-_ft_bzero:
-	push rdx
+_ft_memset:
+	push rax
+	push r8
 	push rdi
-	mov rdx, 0 ;			set counter to 0
 
-loop:
-	mov byte[rdi], 0 ;		set address value to 0
-	inc rdx ;				inc address
-	inc rdi
-	cmp rsi, rdx ;			compare counter with size
-	jne loop ;				brother do you have some loops
-	jmp end
+	mov rcx, rsi
+	mov r8, rsi
+	and r8, 0xff
+	mov rax, r8
+	rep lodsb
+
+	pop rdi
+	pop r8
+	pop rax
