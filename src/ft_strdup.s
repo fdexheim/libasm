@@ -1,34 +1,42 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_bzero.s                                         :+:      :+:    :+:    #
+#    ft_strdup.s                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/10/17 12:31:50 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/31 15:27:29 by fdexheim         ###   ########.fr        #
+#    Created: 2018/10/31 13:29:53 by fdexheim          #+#    #+#              #
+#    Updated: 2018/10/31 15:33:34 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 section .text
-	global _ft_bzero
-	global loop
-	global end
+	extern _ft_strlen
+	extern _ft_memcpy
+	extern malloc
+	global _ft_strdup
+	global badmem
+	global epilogue
 
-end:
-	pop rdi
-	pop rdx
+epilogue:
 	ret
 
-_ft_bzero:
-	push rdx
-	push rdi
-	mov rdx, 0 ;			set counter to 0
+badmem:
+	mov rax, 0
+	ret
 
-loop:
-	mov byte[rdi], 0 ;		set address value to 0
-	inc rdx ;				inc address
-	inc rdi
-	cmp rsi, rdx ;			compare counter with size
-	jne loop ;				brother do you have some loops
-	jmp end
+_ft_strdup:
+	call _ft_strlen
+
+	mov rsi, rdi
+	mov rdx, rax
+	mov rdi, rax
+
+	inc rdi						; for the terminal 0 in the allocated string
+	call malloc
+	cmp rax, 0
+	je badmem
+	mov byte[rax + rdx + 1], 0
+	mov rdi, rax
+	call _ft_memcpy
+	jmp epilogue
