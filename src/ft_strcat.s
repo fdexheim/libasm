@@ -6,15 +6,12 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:00:27 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/31 15:33:15 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/01 10:11:48 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 section .text
 	global _ft_strcat
-	global advance
-	global copy
-	global end
 
 copy:
 	mov al, byte[rsi]

@@ -6,14 +6,12 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/22 15:04:57 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/31 15:32:22 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/01 10:10:23 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 section .text
 	global _ft_isdigit
-	global itsdigitmate
-	global done
 
 itsdigitmate:
 	mov rax, 1			;we set return value to 1 (true)

@@ -6,13 +6,12 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 09:43:14 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/31 15:32:33 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/01 10:10:27 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 section .text
 	global _ft_isprint
-	global nope
 
 nope:
 	mov rax, 0			; we set return value to 0 (false)

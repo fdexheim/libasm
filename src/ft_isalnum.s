@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/24 12:40:35 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/31 15:32:11 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/01 10:09:50 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ section .text
 	extern _ft_isalpha
 	extern _ft_isdigit
 	global _ft_isalnum
-	global yes
 
 _ft_isalnum:
 	mov rax, 0
