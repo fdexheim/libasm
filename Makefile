@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/26 14:02:22 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/31 15:35:55 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/01 10:31:51 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.s
 
 #	@$(CC_NASM) $(CC_NASM_FLAGS) -o $@ $(OBJ)
 $(NAME): $(OBJ)
-	ld -dylib $(OBJ) -o $(NAME)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 	@echo "\033[1;32;m[Compilation Successful]\033[0m"
 	@echo "\033[1;36;m$(NAME)\033[1;32;m ready to go !\033[0m"
 

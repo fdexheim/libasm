@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/31 13:29:53 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/31 15:33:34 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/01 10:12:08 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,6 @@ section .text
 	extern _ft_memcpy
 	extern malloc
 	global _ft_strdup
-	global badmem
-	global epilogue
 
 epilogue:
 	ret

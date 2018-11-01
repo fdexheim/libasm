@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/24 10:39:13 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/31 15:32:05 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/01 10:09:59 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ section .text
 	extern _ft_islower
 	extern _ft_isupper
 	global _ft_isalpha
-	global notalpha
 
 notalpha:
 	mov rax, 0

@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 13:33:28 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/31 15:33:07 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/01 10:13:01 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,6 @@ section .data
 section .text
 	extern _ft_strlen
 	global _ft_puts
-	global endline
-	global nodgood
 
 notgood:
 	mov rax, 4
