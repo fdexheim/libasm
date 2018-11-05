@@ -6,7 +6,7 @@
 /*   By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 10:07:22 by fdexheim          #+#    #+#             */
-/*   Updated: 2018/11/01 10:54:44 by fdexheim         ###   ########.fr       */
+/*   Updated: 2018/11/05 11:47:57 by fdexheim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stddef.h>
 
 void		ft_bzero(void *s, size_t n);
+void		ft_cat(int fd);
 int			ft_isalnum(int c);
 int			ft_isalpha(int c);
 int			ft_isascii(int c);
