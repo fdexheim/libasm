@@ -6,17 +6,17 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/26 14:02:22 by fdexheim          #+#    #+#              #
-#    Updated: 2018/11/01 10:31:51 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/05 12:01:57 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	libfts.a
 
 SRC_PATH = ./src/
-SRC_NAME =	ft_bzero.s ft_isalnum.s ft_isalpha.s ft_isascii.s \
+SRC_NAME =	ft_bzero.s ft_cat.s ft_isalnum.s ft_isalpha.s ft_isascii.s \
 			ft_isdigit.s ft_islower.s ft_isprint.s ft_isupper.s ft_memset.s \
 			ft_memcpy.s ft_puts.s \
-			ft_strcat.s ft_strdup.s ft_tolower.s ft_toupper.s \
+			ft_strcat.s ft_strdup.s ft_strlen.s ft_tolower.s ft_toupper.s \
 
 OBJ_PATH = ./obj/
 OBJ_NAME =	$(SRC_NAME:.s=.o)
