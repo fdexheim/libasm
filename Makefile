@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/26 14:02:22 by fdexheim          #+#    #+#              #
-#    Updated: 2018/11/05 12:01:57 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/06 08:36:03 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.s
 	@mkdir $(OBJ_PATH) 2> /dev/null || echo "" > /dev/null
 	$(CC_NASM) $(CC_NASM_FLAGS) $< -o $@
 
-#	@$(CC_NASM) $(CC_NASM_FLAGS) -o $@ $(OBJ)
 $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
@@ -43,12 +42,11 @@ $(NAME): $(OBJ)
 
 clean:
 	@echo "\033[0;33;m[Clean]\033[0m              : " | tr -d '\n'
-	rm -f $(OBJ)
+	rm -rf $(OBJ_PATH)
 
 fclean:		clean
 	@echo "\033[0;31;m[Deleting $(NAME)]\033[0m : " | tr -d '\n'
 	rm -f $(NAME)
-	@rm -rf $(OBJ_PATH)
 
 re:			fclean all
 
