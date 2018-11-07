@@ -6,9 +6,13 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 13:33:28 by fdexheim          #+#    #+#              #
-#    Updated: 2018/11/06 12:01:12 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/07 12:24:35 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+%define MACH_SYSCALL(nb)				0x2000000 | nb
+%define WRITE							4
+%define	STDOUT							1
 
 section .data
 	endl: db "",10
@@ -19,18 +23,18 @@ section .text
 	extern _ft_strlen
 	global _ft_puts
 
-notgood:
-	mov rax, 4
-	mov rdi, 1
+nullstr:
+	mov rax, MACH_SYSCALL(WRITE)
+	mov rdi, STDOUT
 	mov rsi, nulll
 	mov rdx, nul_len
 	syscall
-	mov rax, 0					; not sure about that return value tho...
+	mov rax, 0							; not sure about that return value tho...
 	jmp end
 
 endline:
-	mov rax, 4
-	mov rdi, 1
+	mov rax, MACH_SYSCALL(WRITE)
+	mov rdi, STDOUT
 	mov rsi, endl
 	mov rdx, 1
 	syscall
@@ -39,7 +43,7 @@ end:
 	pop rdx
 	pop rsi
 	pop rdi
-	mov rax, rdi
+	mov rax, 10
 	ret
 
 _ft_puts:
@@ -47,11 +51,13 @@ _ft_puts:
 	push rsi
 	push rdx
 	cmp rdi, 0
-	je notgood
+	je nullstr
 	call _ft_strlen
+	cmp rax, 0
+	je endline
 	mov rsi, rdi
-	mov rdx, rax				; size in 3rd parameter we got from _ft_strlen
-	mov rax, 4					; write call
-	mov rdi, 1
+	mov rdx, rax						; size in 3rd parameter we got from _ft_strlen
+	mov rax, MACH_SYSCALL(WRITE)		; write call
+	mov rdi, STDOUT
 	syscall
 	jmp endline
