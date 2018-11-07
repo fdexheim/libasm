@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/31 09:59:44 by fdexheim          #+#    #+#              #
-#    Updated: 2018/10/31 15:32:48 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/07 10:58:04 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,15 +15,20 @@ section .text
 
 _ft_memset:
 	push rax
-	push r8
 	push rdi
+	push rsi
+	push rdx
 
-	mov rcx, rsi
-	mov r8, rsi
-	and r8, 0xff
-	mov rax, r8
-	rep lodsb
+	mov rcx, rdx
+	xor rax, rax
+	mov rax, rsi
+	and rax, 0xff
+	rep stosb
 
+	pop rdx
+	pop rsi
 	pop rdi
-	pop r8
 	pop rax
+
+	mov rax, rdi
+	ret

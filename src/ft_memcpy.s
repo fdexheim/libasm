@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/31 11:23:39 by fdexheim          #+#    #+#              #
-#    Updated: 2018/11/01 10:10:33 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/07 09:36:01 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,3 +26,5 @@ _ft_memcpy:
 	pop rsi
 	pop rdi
 	pop rax
+	mov rax, rdi
+	ret
