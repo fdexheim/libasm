@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 13:33:28 by fdexheim          #+#    #+#              #
-#    Updated: 2018/11/07 12:24:35 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/08 09:23:16 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ section .text
 nullstr:
 	mov rax, MACH_SYSCALL(WRITE)
 	mov rdi, STDOUT
-	mov rsi, nulll
+	lea rsi, [rel nulll]
 	mov rdx, nul_len
 	syscall
 	mov rax, 0							; not sure about that return value tho...
@@ -35,7 +35,7 @@ nullstr:
 endline:
 	mov rax, MACH_SYSCALL(WRITE)
 	mov rdi, STDOUT
-	mov rsi, endl
+	lea rsi, [rel endl]
 	mov rdx, 1
 	syscall
 

@@ -6,7 +6,7 @@
 /*   By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 10:07:22 by fdexheim          #+#    #+#             */
-/*   Updated: 2018/11/05 11:47:57 by fdexheim         ###   ########.fr       */
+/*   Updated: 2018/11/08 13:15:29 by fdexheim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@ int			ft_isdigit(int c);
 int			ft_islower(int c);
 int			ft_isprint(int c);
 int			ft_isupper(int c);
+int			ft_max(unsigned int i, unsigned int j);
+int			ft_max_s(int i, int j);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
 void		*ft_memset(void *b, int c, size_t len);
+int			ft_min(unsigned int i, unsigned int j);
+int			ft_min_s(int i, int j);
 int			ft_puts(const char *s);
 char		*ft_strcat(const char *s1, const char *s2, size_t n);
 char		*ft_strdup(const char *s1);

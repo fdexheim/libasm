@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/31 13:29:53 by fdexheim          #+#    #+#              #
-#    Updated: 2018/11/07 11:36:53 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/08 14:38:02 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,16 +30,23 @@ _ft_strdup:
 	push rdi
 	push rsi
 	push rdx
+
+getlen:
 	call _ft_strlen
 	mov rsi, rdi
 	mov rdx, rax
 	mov rdi, rax
 
+allocate:
 	inc rdi						; for the terminal 0 in the allocated string
+	push rdi
 	call _malloc
+	pop rdi
 	cmp rax, 0
 	je badmem
 	mov byte[rax + rdx + 1], 0
+
+copy:
 	mov rdi, rax
 	call _ft_memcpy
 	jmp epilogue
