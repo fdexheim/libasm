@@ -6,47 +6,54 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/31 13:29:53 by fdexheim          #+#    #+#              #
-#    Updated: 2018/11/08 14:38:02 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/09 13:30:01 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 section .text
-	extern _ft_strlen
-	extern _ft_memcpy
-	extern _malloc
-	global _ft_strdup
-
-epilogue:
-	pop rdx
-	pop rsi
-	pop rdi
-	ret
+	extern _ft_strlen ; size_t		ft_strlen(const char *s);
+	extern _ft_memcpy ; void		*ft_memcpy(void *dst, void *src, size_t n);
+	extern _malloc ; void			*malloc(size_t size);
+	global _ft_strdup ; char		*strdup(const char *s1);
 
 badmem:
+	pop rdx
+	pop rsi
+	pop rsi
+
+badaddress:
 	mov rax, 0
-	jmp epilogue
+
+epilogue:
+	mov rsp, rbp
+	pop rbp
+	ret
 
 _ft_strdup:
-	push rdi
-	push rsi
-	push rdx
+	push rbp
+	mov rbp, rsp
+	cmp rdi, 0
+	je badaddress
 
-getlen:
+	;get lengh for new string:
+	push rsi ;						for allignement
+	push rdi ;						saving address of src
 	call _ft_strlen
-	mov rsi, rdi
-	mov rdx, rax
-	mov rdi, rax
+	push rax ;						saving lengh returned by strlen
 
-allocate:
-	inc rdi						; for the terminal 0 in the allocated string
-	push rdi
+	;allocate memory
+	mov rdi, rax
+	inc rdi ;						for the terminal 0 in the allocated string
 	call _malloc
-	pop rdi
-	cmp rax, 0
+	cmp rax, 0 ;					did malloc fuckup ?
 	je badmem
-	mov byte[rax + rdx + 1], 0
+	mov byte[rax + rdi - 1], 0
+	mov rdi, rax
 
 copy:
-	mov rdi, rax
+	; copy data from str1 to str 2
+	pop rdx ;						size argument from pushed rax
+	pop rsi ;						address of src from pushed rdi
 	call _ft_memcpy
+	pop rsi ;						allign and stuff
 	jmp epilogue
