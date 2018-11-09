@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 13:33:28 by fdexheim          #+#    #+#              #
-#    Updated: 2018/11/08 09:23:16 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/09 13:35:53 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ end:
 	pop rdx
 	pop rsi
 	pop rdi
-	mov rax, 10
 	ret
 
 _ft_puts:
