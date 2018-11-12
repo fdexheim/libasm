@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/31 13:29:53 by fdexheim          #+#    #+#              #
-#    Updated: 2018/11/09 13:30:01 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/12 16:22:41 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ section .text
 
 badmem:
 	pop rdx
-	pop rsi
 	pop rsi
 
 badaddress:
@@ -36,13 +35,12 @@ _ft_strdup:
 	je badaddress
 
 	;get lengh for new string:
-	push rsi ;						for allignement
 	push rdi ;						saving address of src
 	call _ft_strlen
+	mov rdi, rax
 	push rax ;						saving lengh returned by strlen
 
 	;allocate memory
-	mov rdi, rax
 	inc rdi ;						for the terminal 0 in the allocated string
 	call _malloc
 	cmp rax, 0 ;					did malloc fuckup ?
@@ -55,5 +53,4 @@ copy:
 	pop rdx ;						size argument from pushed rax
 	pop rsi ;						address of src from pushed rdi
 	call _ft_memcpy
-	pop rsi ;						allign and stuff
 	jmp epilogue
