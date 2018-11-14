@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/31 13:29:53 by fdexheim          #+#    #+#              #
-#    Updated: 2018/11/12 16:22:41 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/14 12:45:40 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,14 +24,12 @@ badaddress:
 	mov rax, 0
 
 epilogue:
-	mov rsp, rbp
-	pop rbp
+	leave
 	ret
 
 _ft_strdup:
-	push rbp
-	mov rbp, rsp
-	cmp rdi, 0
+	enter 0, 0
+	cmp rdi, 0 ;					naughty naughty user
 	je badaddress
 
 	;get lengh for new string:
@@ -42,7 +40,12 @@ _ft_strdup:
 
 	;allocate memory
 	inc rdi ;						for the terminal 0 in the allocated string
+	xor rax, rax
+	push rdi
+	push rsi ;						for allignment, we don't care about what's in rsi
 	call _malloc
+	pop rsi ;						see above
+	pop rdi
 	cmp rax, 0 ;					did malloc fuckup ?
 	je badmem
 	mov byte[rax + rdi - 1], 0
