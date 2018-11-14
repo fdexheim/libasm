@@ -6,7 +6,7 @@
 /*   By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 14:59:48 by fdexheim          #+#    #+#             */
-/*   Updated: 2018/11/12 15:25:11 by fdexheim         ###   ########.fr       */
+/*   Updated: 2018/11/14 15:53:56 by fdexheim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int					main(void)
 	const char		*empty_string = "";
 	const char		*short_string = "42";
 	const char		*medium_string = "You there ! Let me bend your ear for a moment !";
-	const char		*long_string = "\n\nDo you know where the duelist tradition came from, exile?\n\nThe Ezomytes.\n\nEarly on, those western potato munchers worked out that war was a pretty bloody stupid idea. At least the wholesale slaughter side of it. So they fashioned themselves a tradition of Championship.\n\nHere's how an Ezomyte battle would go. Both sides get dressed up in their fiercest and finest war garb. They'd all prance about, banging drums and flinging curses at each other. Then, when everyone was het up enough, a few chosen lads or lasses would step forward and fight it out...to the death usually.\n\nThe point of it all? My champions win, and I get to have that fish-filled estuary on my border. Your champions win, and I hand over a few hundred cows. Deal done, and most of us get to go home.\n\nThe Eternals pinched the idea from the Ezomytes, and the Oriathans pinched the idea from the Eternals.";
+	const char		*long_string = "\nDo you know where the duelist tradition came from, exile?\n\nThe Ezomytes.\n\nEarly on, those western potato munchers worked out that war was a pretty bloody stupid idea. At least the wholesale slaughter side of it. So they fashioned themselves a tradition of Championship.\n\nHere's how an Ezomyte battle would go. Both sides get dressed up in their fiercest and finest war garb. They'd all prance about, banging drums and flinging curses at each other. Then, when everyone was het up enough, a few chosen lads or lasses would step forward and fight it out...to the death usually.\n\nThe point of it all? My champions win, and I get to have that fish-filled estuary on my border. Your champions win, and I hand over a few hundred cows. Deal done, and most of us get to go home.\n\nThe Eternals pinched the idea from the Ezomytes, and the Oriathans pinched the idea from the Eternals.\n";
 
 	char			receptacle[4096]; // buffer for testing purposes
 	char			receptacle2[4096]; // buffer for testing purposes
@@ -262,10 +262,10 @@ int					main(void)
 	putstr_ghetto("\n\n-------------------- TEST ft_memcpy --------------------\n");
 	putstr_ghetto("To dispence some righteous justice, [buffer reference] brought his sidekick [buffer2] !\n");
 	dumpmem(receptacle2, 20);
-	putstr_ghetto("\n\n[first 20 bytes of buffer2 after memcpy of size 0\n");
+	putstr_ghetto("\n\n[first 20 bytes of buffer2 after memcpy of size 0]\n");
 	ft_memcpy(receptacle2, receptacle, 0);
 	dumpmem(receptacle2, 20);
-	putstr_ghetto("\n\n[first 20 bytes of buffer2 after memcpy of size 15\n");
+	putstr_ghetto("\n\n[first 20 bytes of buffer2 after memcpy of size 15]\n");
 	ft_memcpy(receptacle2, receptacle, 15);
 	dumpmem(receptacle2, 20);
 
@@ -278,36 +278,65 @@ int					main(void)
 
 	putstr_ghetto("duplicated empty_string  | ");
 	dup_empty = ft_strdup(empty_string);
-//	dup_empty = strdup(empty_string);
 	put_size_t_ghetto((size_t)dup_empty);
 	putstr_ghetto("\n");
 	putstr_ghetto(dup_empty);
 
 	putstr_ghetto("\nduplicated short_string  | ");
 	dup_short = ft_strdup(short_string);
-//	dup_short = strdup(short_string);
 	put_size_t_ghetto((size_t)dup_short);
 	putstr_ghetto("\n");
 	putstr_ghetto(dup_short);
 
 	putstr_ghetto("\nduplicated medium_string | ");
 	dup_medium = ft_strdup(medium_string);
-//	dup_medium = strdup(medium_string);
 	put_size_t_ghetto((size_t)dup_medium);
 	putstr_ghetto("\n");
 	putstr_ghetto(dup_medium);
 
 	putstr_ghetto("\nduplicated long_string   | ");
 	dup_long = ft_strdup(long_string);
-//	dup_long = strdup(long_string);
 	put_size_t_ghetto((size_t)dup_long);
 	putstr_ghetto("\n");
 	putstr_ghetto(dup_long);
 
-//	free(dup_empty);
-//	free(dup_short);
-//	free(dup_medium);
-//	free(dup_long);
+	free(dup_empty);
+	free(dup_short);
+	free(dup_medium);
+	free(dup_long);
 
-	return 0;
+	putstr_ghetto("\n\n-------------------- TEST ft_cat --------------------\n");
+
+	int fd;
+
+	putstr_ghetto("opening fd for file ./tests/main.c...\n");
+	fd = open("./tests/main.c", O_RDONLY);
+	putstr_ghetto("calling ft_cat...\nfd = ");
+	put_size_t_ghetto(fd);
+	putstr_ghetto("\n");
+	ft_cat(fd);
+	putstr_ghetto("closing fd...\n");
+	close(fd);
+	
+	putstr_ghetto("\nopening fd for file ./auteur...\n");
+	fd = open("./auteur", O_RDONLY);
+	putstr_ghetto("calling ft_cat...\nfd = ");
+	put_size_t_ghetto(fd);
+	putstr_ghetto("\n");
+	ft_cat(fd);
+	putstr_ghetto("closing fd...\n");
+	close(fd);
+
+	puts("\nft_cat fd = 0\n"); // stdin
+	ft_cat(0);
+	puts("\nft_cat fd = 1\n"); // stdout
+	ft_cat(1);
+	puts("\nft_cat fd = 2\n"); // stderr
+	ft_cat(2);
+
+//	puts("\nft_cat fd = -1\n"); // lol
+//	ft_cat(-1);
+
+
+	return 0; // how many vegans does it take to change a lightbulb ?
 }
