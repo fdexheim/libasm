@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 11:48:09 by fdexheim          #+#    #+#              #
-#    Updated: 2018/11/14 15:53:30 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/15 09:53:37 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,41 +27,37 @@ section .text
 
 _ft_cat:
 	enter 0, 0
-
 	cmp rdi, 0
 	jl end
-
 	push rdi
 	mov rsi, BUFFSIZE
 	lea rdi, [rel bufferino]
 	call _ft_bzero
 	pop rdi
-
 	lea rsi, [rel bufferino]
 
 loop:
-	mov rax, MACH_SYSCALL(READ) ;		rdi should already be at the right place
+	mov rax, MACH_SYSCALL(READ) ;		rdi is already at the right place
 	mov rdx, BUFFSIZE
-	push rsi
 	syscall
-	pop rsi
-
+	jc bad ;							if carry flag is set, time to abandon ship with an evil laughter
 	cmp rax, 0
 	jle end
-
 	push rdi
 	push rsi
-
 	mov rdx, rax ;						length returned by read in write parameter
 	mov rax, MACH_SYSCALL(WRITE)
 	mov rdi, STDOUT
 	syscall ;							loosing a whole day because you forgot syscall hmmmm mnyieeees
-
 	pop rsi
 	pop rdi
-
+	jc bad
 	jmp loop ;							brother may i have some loops
+
+bad:
+	mov rax, -1
 
 end:
 	leave
 	ret
+
