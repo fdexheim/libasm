@@ -6,7 +6,7 @@
 /*   By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 14:59:48 by fdexheim          #+#    #+#             */
-/*   Updated: 2018/11/14 15:53:56 by fdexheim         ###   ########.fr       */
+/*   Updated: 2018/11/15 15:53:55 by fdexheim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int					main(void)
 	bzero(receptacle, 4096);
 	bzero(receptacle2, 4096);
 
-	putstr_ghetto("\n\n-------------------- TEST ft_isalpha --------------------\n");
+	putstr_ghetto("\n-------------------- TEST ft_isalpha --------------------\n");
 	putstr_ghetto("Return values\nTest 1 | 'a' | ");
 	putnbr_ghetto(ft_isalpha('a'));
 	putstr_ghetto("\nTest 2 | 'z' | ");
@@ -143,7 +143,10 @@ int					main(void)
 	putstr_ghetto("\nTest 5 | '[' | ");
 	putnbr_ghetto(ft_isalpha('['));
 
-	putstr_ghetto("\n\n-------------------- TEST ft_isdigit --------------------\n");
+	putstr_ghetto("\n\n[press ENTER to continue]\n");
+	getchar();
+
+	putstr_ghetto("\n-------------------- TEST ft_isdigit --------------------\n");
 	putstr_ghetto("Return values\nTest 1 | '0' | ");
 	putnbr_ghetto(ft_isdigit('0'));
 	putstr_ghetto("\nTest 2 | '9' | ");
@@ -153,7 +156,10 @@ int					main(void)
 	putstr_ghetto("\nTest 3 | ':' | ");
 	putnbr_ghetto(ft_isdigit(':'));
 
-	putstr_ghetto("\n\n-------------------- TEST ft_isalnum --------------------\n");
+	putstr_ghetto("\n\n[press ENTER to continue]");
+	getchar();
+
+	putstr_ghetto("\n-------------------- TEST ft_isalnum --------------------\n");
 	putstr_ghetto("Return values\nTest 1 | '0' | ");
 	putnbr_ghetto(ft_isalnum('0'));
 	putstr_ghetto("\nTest 2 | '9' | ");
@@ -163,7 +169,10 @@ int					main(void)
 	putstr_ghetto("\nTest 4 | ':' | ");
 	putnbr_ghetto(ft_isalnum(':'));
 
-	putstr_ghetto("\n\n-------------------- TEST ft_isascii --------------------\n");
+	putstr_ghetto("\n\n[press ENTER to continue]");
+	getchar();
+
+	putstr_ghetto("\n-------------------- TEST ft_isascii --------------------\n");
 	putstr_ghetto("Return values\nTest 1 | '0'   | ");
 	putnbr_ghetto(ft_isascii('0'));
 	putstr_ghetto("\nTest 2 | 'del' | ");
@@ -171,7 +180,10 @@ int					main(void)
 	putstr_ghetto("\nTest 2 | 2049  | ");
 	putnbr_ghetto(ft_isascii(2049));
 	
-	putstr_ghetto("\n\n-------------------- TEST ft_isprint --------------------\n");
+	putstr_ghetto("\n\n[press ENTER to continue]");
+	getchar();
+
+	putstr_ghetto("\n-------------------- TEST ft_isprint --------------------\n");
 	putstr_ghetto("Return values\nTest 1 | '0'   | ");
 	putnbr_ghetto(ft_isprint('0'));
 	putstr_ghetto("\nTest 2 | 'del' | ");
@@ -179,7 +191,10 @@ int					main(void)
 	putstr_ghetto("\nTest 2 | 2049  | ");
 	putnbr_ghetto(ft_isprint(2049));
 
-	putstr_ghetto("\n\n-------------------- TEST ft_toupper --------------------\n");
+	putstr_ghetto("\n\n[press ENTER to continue]");
+	getchar();
+
+	putstr_ghetto("\n-------------------- TEST ft_toupper --------------------\n");
 	putstr_ghetto("Return values\nTest 1 | '0'   | ");
 	putnbr_ghetto(ft_toupper('0'));
 	putstr_ghetto("\nTest 2 | 2049  | ");
@@ -189,7 +204,10 @@ int					main(void)
 	putstr_ghetto("\nTest 4 | 'g'   | ");
 	putnbr_ghetto(ft_toupper('g'));
 
-	putstr_ghetto("\n\n-------------------- TEST ft_tolower --------------------\n");
+	putstr_ghetto("\n\n[press ENTER to continue]");
+	getchar();
+
+	putstr_ghetto("\n-------------------- TEST ft_tolower --------------------\n");
 	putstr_ghetto("Return values\nTest 1 | '0'   | ");
 	putnbr_ghetto(ft_tolower('0'));
 	putstr_ghetto("\nTest 2 | 2049  | ");
@@ -199,7 +217,10 @@ int					main(void)
 	putstr_ghetto("\nTest 4 | 'g'   | ");
 	putnbr_ghetto(ft_tolower('g'));
 
-	putstr_ghetto("\n\n-------------------- TEST ft_strcat --------------------\n");
+	putstr_ghetto("\n\n[press ENTER to continue]");
+	getchar();
+
+	putstr_ghetto("\n-------------------- TEST ft_strcat --------------------\n");
 	putstr_ghetto("Short_string = \"");
 	putstr_ghetto(short_string);
 	putstr_ghetto("\"\nMedium_string = \"");
@@ -217,7 +238,10 @@ int					main(void)
 	ft_strcat(receptacle, empty_string);
 	putstr_ghetto(receptacle);
 
-	putstr_ghetto("\n\n-------------------- TEST ft_bzero --------------------\n");
+	putstr_ghetto("\n\n[press ENTER to continue]");
+	getchar();
+
+	putstr_ghetto("\n-------------------- TEST ft_bzero --------------------\n");
 	putstr_ghetto("[buffer reference]\n");
 	dumpmem(receptacle, 20);
 	ft_bzero(receptacle, 0);
@@ -227,17 +251,23 @@ int					main(void)
 	putstr_ghetto("\n\n[first 20 bytes of buffer after bzero of size 5 at start of buffer...]\n");
 	dumpmem(receptacle, 20);
 
-	putstr_ghetto("\n\n-------------------- TEST ft_puts --------------------\n");
-	putstr_ghetto(">---[empty string]----<\n");
+	putstr_ghetto("\n\n[press ENTER to continue]");
+	getchar();
+
+	putstr_ghetto("\n-------------------- TEST ft_puts --------------------\n");
+	putstr_ghetto("[empty string]\n");
 	ft_puts(empty_string);
-	putstr_ghetto("\n>---[short string]----<\n");
+	putstr_ghetto("[short string]\n");
 	ft_puts(short_string);
-	putstr_ghetto("\n>---[medium string]---<\n");
+	putstr_ghetto("[medium string]\n");
 	ft_puts(medium_string);
-	putstr_ghetto("\n>---[long string]-----<\n");
+	putstr_ghetto("[long string]\n");
 	ft_puts(long_string);
-	putstr_ghetto("\n>---[NULL string]-----<\n");
+	putstr_ghetto("[NULL string]\n");
 	ft_puts(NULL);
+
+	putstr_ghetto("\n\n[press ENTER to continue]");
+	getchar();
 
 	putstr_ghetto("\n-------------------- TEST ft_strlen --------------------\n");
 	putstr_ghetto("Return values\nTest 1 | empty string  | ");
@@ -249,7 +279,10 @@ int					main(void)
 	putstr_ghetto("\nTest 2 | long string   | ");
 	putnbr_ghetto(ft_strlen(long_string));
 
-	putstr_ghetto("\n\n-------------------- TEST ft_memset --------------------\n");
+	putstr_ghetto("\n\n[press ENTER to continue]");
+	getchar();
+
+	putstr_ghetto("\n-------------------- TEST ft_memset --------------------\n");
 	putstr_ghetto("Remember our good friend [buffer reference] ? Well guess what he's back\n");
 	dumpmem(receptacle, 20);
 	ft_memset(receptacle, 42, 0);
@@ -259,7 +292,10 @@ int					main(void)
 	putstr_ghetto("\n\n[first 20 bytes of buffer after memset value 42 of size 10 at start of buffer...]\n");
 	dumpmem(receptacle, 20);
 
-	putstr_ghetto("\n\n-------------------- TEST ft_memcpy --------------------\n");
+	putstr_ghetto("\n\n[press ENTER to continue]");
+	getchar();
+
+	putstr_ghetto("\n-------------------- TEST ft_memcpy --------------------\n");
 	putstr_ghetto("To dispence some righteous justice, [buffer reference] brought his sidekick [buffer2] !\n");
 	dumpmem(receptacle2, 20);
 	putstr_ghetto("\n\n[first 20 bytes of buffer2 after memcpy of size 0]\n");
@@ -269,7 +305,10 @@ int					main(void)
 	ft_memcpy(receptacle2, receptacle, 15);
 	dumpmem(receptacle2, 20);
 
-	putstr_ghetto("\n\n-------------------- TEST ft_strdup --------------------\n");
+	putstr_ghetto("\n\n[press ENTER to continue]");
+	getchar();
+
+	putstr_ghetto("\n-------------------- TEST ft_strdup --------------------\n");
 
 	char			*dup_empty;
 	char			*dup_short;
@@ -305,7 +344,10 @@ int					main(void)
 	free(dup_medium);
 	free(dup_long);
 
-	putstr_ghetto("\n\n-------------------- TEST ft_cat --------------------\n");
+	putstr_ghetto("\n\n[press ENTER to continue]");
+	getchar();
+
+	putstr_ghetto("\n-------------------- TEST ft_cat --------------------\n");
 
 	int fd;
 
@@ -313,7 +355,8 @@ int					main(void)
 	fd = open("./tests/main.c", O_RDONLY);
 	putstr_ghetto("calling ft_cat...\nfd = ");
 	put_size_t_ghetto(fd);
-	putstr_ghetto("\n");
+	putstr_ghetto("\n[wall of text warning. no seriously get an umbrella]\n");
+	getchar();
 	ft_cat(fd);
 	putstr_ghetto("closing fd...\n");
 	close(fd);
@@ -327,16 +370,99 @@ int					main(void)
 	putstr_ghetto("closing fd...\n");
 	close(fd);
 
-	puts("\nft_cat fd = 0\n"); // stdin
+	putstr_ghetto("\nft_cat fd = 0\n"); // stdin
 	ft_cat(0);
-	puts("\nft_cat fd = 1\n"); // stdout
+	putstr_ghetto("\nft_cat fd = 1\n"); // stdout
 	ft_cat(1);
-	puts("\nft_cat fd = 2\n"); // stderr
+	putstr_ghetto("\nft_cat fd = 2\n"); // stderr
 	ft_cat(2);
 
-//	puts("\nft_cat fd = -1\n"); // lol
-//	ft_cat(-1);
+	putstr_ghetto("\nft_cat fd = -1\n"); // lol
+	ft_cat(-1);
+
+	putstr_ghetto("closed fd\b"); // lol 2 electric lolgaloo
+	ft_cat(fd);
+
+	putstr_ghetto("\n==================== BONUS ==========================\n");
+	putstr_ghetto("press ENTER to tests bonus functions");
+	getchar();
+
+	putstr_ghetto("\n-------------------- TEST ft_islower --------------------\n");
+	putstr_ghetto("Return values\nTest 1 | 'a' | ");
+	putnbr_ghetto(ft_islower('a'));
+	putstr_ghetto("\nTest 2 | 'z' | ");
+	putnbr_ghetto(ft_islower('z'));
+	putstr_ghetto("\nTest 3 | 'A' | ");
+	putnbr_ghetto(ft_islower('A'));
+	putstr_ghetto("\nTest 4 | 'Z' | ");
+	putnbr_ghetto(ft_islower('Z'));
+	putstr_ghetto("\nTest 5 | '3' | ");
+	putnbr_ghetto(ft_islower('3'));
+	putstr_ghetto("\nTest 6 | '[' | ");
+	putnbr_ghetto(ft_islower('['));
+
+	putstr_ghetto("\n-------------------- TEST ft_isupper --------------------\n");
+	putstr_ghetto("Return values\nTest 1 | 'a' | ");
+	putnbr_ghetto(ft_isupper('a'));
+	putstr_ghetto("\nTest 2 | 'z' | ");
+	putnbr_ghetto(ft_isupper('z'));
+	putstr_ghetto("\nTest 3 | 'A' | ");
+	putnbr_ghetto(ft_isupper('A'));
+	putstr_ghetto("\nTest 4 | 'Z' | ");
+	putnbr_ghetto(ft_isupper('Z'));
+	putstr_ghetto("\nTest 5 | '3' | ");
+	putnbr_ghetto(ft_isupper('3'));
+	putstr_ghetto("\nTest 6 | '[' | ");
+	putnbr_ghetto(ft_isupper('['));
+
+	putstr_ghetto("\n-------------------- TEST ft_min --------------------\n");
+	putstr_ghetto("Return values\nTest 1 | 2049 | 1 | ");
+	putnbr_ghetto(ft_min(2049, 1));
+	putstr_ghetto("\nTest 2 | 1 | 2049 | ");
+	putnbr_ghetto(ft_min(1, 2049));
+	putstr_ghetto("\nTest 3 | 2049 | 2049 | ");
+	putnbr_ghetto(ft_min(2049, 2049));
+	putstr_ghetto("\nTest 4 | 0 | 2077 | ");
+	putnbr_ghetto(ft_min(0, 2077));
+	putstr_ghetto("\nTest 5 | -1 | 1 | ");
+	putnbr_ghetto(ft_min(-1, 1));
+
+	putstr_ghetto("\n-------------------- TEST ft_max --------------------\n");
+	putstr_ghetto("Return values\nTest 1 | 2049 | 1 | ");
+	putnbr_ghetto(ft_max(2049, 1));
+	putstr_ghetto("\nTest 2 | 1 | 2049 | ");
+	putnbr_ghetto(ft_max(1, 2049));
+	putstr_ghetto("\nTest 3 | 2049 | 2049 | ");
+	putnbr_ghetto(ft_max(2049, 2049));
+	putstr_ghetto("\nTest 4 | 0 | 2077 | ");
+	putnbr_ghetto(ft_max(0, 2077));
+	putstr_ghetto("\nTest 5 | -1 | 1 | ");
+	putnbr_ghetto(ft_max(-1, 1));
+
+	putstr_ghetto("\n-------------------- TEST ft_min_s --------------------\n");
+	putstr_ghetto("Return values\nTest 1 | 2049 | 1 | ");
+	putnbr_ghetto(ft_min_s(2049, 1));
+	putstr_ghetto("\nTest 2 | 1 | 2049 | ");
+	putnbr_ghetto(ft_min_s(1, 2049));
+	putstr_ghetto("\nTest 3 | 2049 | 2049 | ");
+	putnbr_ghetto(ft_min_s(2049, 2049));
+	putstr_ghetto("\nTest 4 | 0 | 2077 | ");
+	putnbr_ghetto(ft_min_s(0, 2077));
+	putstr_ghetto("\nTest 5 | -1 | 1 | ");
+	putnbr_ghetto(ft_min_s(-1, 1));
+
+	putstr_ghetto("\n-------------------- TEST ft_max_s --------------------\n");
+	putstr_ghetto("Return values\nTest 1 | 2049 | 1 | ");
+	putnbr_ghetto(ft_max_s(2049, 1));
+	putstr_ghetto("\nTest 2 | 1 | 2049 | ");
+	putnbr_ghetto(ft_max_s(1, 2049));
+	putstr_ghetto("\nTest 3 | 2049 | 2049 | ");
+	putnbr_ghetto(ft_max_s(2049, 2049));
+	putstr_ghetto("\nTest 4 | 0 | 2077 | ");
+	putnbr_ghetto(ft_max_s(0, 2077));
+	putstr_ghetto("\nTest 5 | -1 | 1 | ");
+	putnbr_ghetto(ft_max_s(-1, 1));
 
 
-	return 0; // how many vegans does it take to change a lightbulb ?
+	return 0;
 }

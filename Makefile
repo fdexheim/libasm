@@ -6,7 +6,7 @@
 #    By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/26 14:02:22 by fdexheim          #+#    #+#              #
-#    Updated: 2018/11/08 11:12:33 by fdexheim         ###   ########.fr        #
+#    Updated: 2018/11/15 15:09:21 by fdexheim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,9 @@ OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 
 all:		$(NAME)
 
+test: all
+	gcc tests/main.c libfts.a -o maintest
+
 $(OBJ_PATH)%.o: $(SRC_PATH)%.s
 	@echo "\033[1;32;m[$@]\033[0m : " | tr -d '\n'
 	@mkdir $(OBJ_PATH) 2> /dev/null || echo "" > /dev/null
@@ -44,6 +47,7 @@ $(NAME): $(OBJ)
 clean:
 	@echo "\033[0;33;m[Clean]\033[0m              : " | tr -d '\n'
 	rm -rf $(OBJ_PATH)
+	@rm -f maintest
 
 fclean:		clean
 	@echo "\033[0;31;m[Deleting $(NAME)]\033[0m : " | tr -d '\n'

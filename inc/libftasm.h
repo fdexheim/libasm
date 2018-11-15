@@ -6,7 +6,7 @@
 /*   By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 10:07:22 by fdexheim          #+#    #+#             */
-/*   Updated: 2018/11/14 14:07:02 by fdexheim         ###   ########.fr       */
+/*   Updated: 2018/11/15 14:00:18 by fdexheim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void		*ft_memcpy(void *dst, const void *src, size_t n);
 void		*ft_memset(void *b, int c, size_t len);
 int			ft_min(unsigned int i, unsigned int j);
 int			ft_min_s(int i, int j);
+void		ft_putaddr(size_t addr);
 int			ft_puts(const char *s);
 char		*ft_strcat(const char *s1, const char *s2);
 char		*ft_strdup(const char *s1);
