@@ -6,7 +6,7 @@
 /*   By: fdexheim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 14:59:48 by fdexheim          #+#    #+#             */
-/*   Updated: 2018/11/15 15:53:55 by fdexheim         ###   ########.fr       */
+/*   Updated: 2018/11/16 08:37:18 by fdexheim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -363,12 +363,20 @@ int					main(void)
 	
 	putstr_ghetto("\nopening fd for file ./auteur...\n");
 	fd = open("./auteur", O_RDONLY);
-	putstr_ghetto("calling ft_cat...\nfd = ");
 	put_size_t_ghetto(fd);
 	putstr_ghetto("\n");
 	ft_cat(fd);
 	putstr_ghetto("closing fd...\n");
 	close(fd);
+
+	putstr_ghetto("\nopening fd for file ./tests/fichier_vide...\n");
+	fd = open("./tests/fichier_vide", O_RDONLY);
+	put_size_t_ghetto(fd);
+	putstr_ghetto("\n");
+	ft_cat(fd);
+	putstr_ghetto("closing fd...\n");
+	close(fd);
+
 
 	putstr_ghetto("\nft_cat fd = 0\n"); // stdin
 	ft_cat(0);
@@ -377,10 +385,10 @@ int					main(void)
 	putstr_ghetto("\nft_cat fd = 2\n"); // stderr
 	ft_cat(2);
 
-	putstr_ghetto("\nft_cat fd = -1\n"); // lol
+	putstr_ghetto("\nft_cat fd = -1\n");
 	ft_cat(-1);
 
-	putstr_ghetto("closed fd\b"); // lol 2 electric lolgaloo
+	putstr_ghetto("closed fd\b");
 	ft_cat(fd);
 
 	putstr_ghetto("\n==================== BONUS ==========================\n");
